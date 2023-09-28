@@ -5,21 +5,20 @@
 // 4. npm i express-handlebars ,
 // 5. Накрая пишем npm start за да стартираме сървъра
 
+
+//Imports
 const express = require("express");
+const handlebarseConfig = require('./config/handlebarsConfig');
+const expressConfig = require("./config/expressConfig");
+const {PORT} = require("./constants")
+// Local variables
 const app = express();
-const handlebarse = require("express-handlebars");
-const PORT = 1080;
-const path = require("path");
 
-// Handlebarse configuration
-app.engine("hbs", handlebarse.engine({ extname: "hbs" }));
-app.set("view engine", "hbs");
-app.set("views", "src/views");
+// configs
+expressConfig(app);
+handlebarseConfig(app);
 
-// setup static files да зареди css fails и да се дебъгва 
-const staticFiles = express.static(path.resolve(__dirname, "public"));
-app.use(staticFiles);
-
+// Routing
 app.get("/", (req, res) => {
   res.render("index");
 });
