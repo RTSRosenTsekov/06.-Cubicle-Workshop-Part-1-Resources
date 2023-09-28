@@ -1,7 +1,7 @@
 const PORT = 1080;
 
 const constants = {
-    PORT:1080
+    PORT:5050
 };
 
 module.exports = constants; 
